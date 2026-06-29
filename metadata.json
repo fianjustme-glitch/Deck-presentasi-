@@ -1,0 +1,8 @@
+{
+  "name": "Nexus Pitch Deck - Alfin Atria",
+  "description": "Professional, minimalist, data-driven business presentation for a web platform, featuring founder Alfin Atria.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
