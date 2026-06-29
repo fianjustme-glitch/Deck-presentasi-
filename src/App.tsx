@@ -31,10 +31,10 @@ export default function App() {
   return (
     <div className="relative w-full h-screen bg-[#050505] text-[#E0E0E0] overflow-hidden flex flex-col font-sans select-none">
       {/* Top Header / Progress Indicator */}
-      <header className="absolute top-0 w-full z-10 flex items-end justify-between p-8 border-b border-white/10">
+      <header className="absolute top-0 w-full z-10 flex items-end justify-between p-4 md:p-8 border-b border-white/10 bg-[#050505]/80 backdrop-blur-md">
         <div>
-          <h2 className="text-[10px] uppercase tracking-[0.3em] text-[#C5A059] font-bold">Strategic Portfolio</h2>
-          <h1 className="text-xl font-light tracking-tight font-serif italic text-[#E0E0E0]">The Alfin Atria Vision</h1>
+          <h2 className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-[#C5A059] font-bold">Strategic Portfolio</h2>
+          <h1 className="text-lg md:text-xl font-light tracking-tight font-serif italic text-[#E0E0E0]">The Alfin Atria Vision</h1>
         </div>
         <div className="text-right flex flex-col items-end gap-2">
           <div className="flex gap-1.5 mb-1">
@@ -52,7 +52,7 @@ export default function App() {
       </header>
 
       {/* Main Slide Content */}
-      <main className="flex-1 relative flex items-center justify-center p-8 md:p-24 overflow-hidden pt-32">
+      <main className="flex-1 relative flex items-center justify-center p-4 md:p-24 overflow-hidden pt-24 md:pt-32 overflow-y-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -68,7 +68,7 @@ export default function App() {
       </main>
 
       {/* Navigation Controls */}
-      <div className="absolute bottom-8 right-8 flex items-center gap-2 z-10">
+      <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 flex items-center gap-2 z-10">
         <button
           onClick={prevSlide}
           disabled={currentSlide === 0}
@@ -94,7 +94,7 @@ function SlideRenderer({ slide }: { slide: any }) {
   switch (slide.layout) {
     case 'center':
       return (
-        <div className="text-center max-w-4xl mx-auto flex flex-col items-center bg-[#0F0F0F] border border-white/5 p-12 relative overflow-hidden">
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center bg-[#0F0F0F] border border-white/5 p-6 md:p-12 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 text-4xl opacity-5 font-serif">01</div>
           {Icon && (
             <div className="w-16 h-16 bg-[#161616] border border-white/10 text-[#C5A059] flex items-center justify-center mb-8 mx-auto">
@@ -106,11 +106,11 @@ function SlideRenderer({ slide }: { slide: any }) {
               {slide.content.tagline}
             </span>
           )}
-          <h1 className="text-5xl md:text-7xl font-serif italic font-light tracking-tight mb-6 text-[#E0E0E0] leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-serif italic font-light tracking-tight mb-6 text-[#E0E0E0] leading-tight">
             {slide.title || slide.content.title}
           </h1>
           {slide.content.subtitle && (
-            <p className="text-sm opacity-60 tracking-wide mb-12">
+            <p className="text-xs md:text-sm lg:text-base opacity-60 tracking-wide mb-12">
               {slide.content.subtitle}
             </p>
           )}
@@ -119,30 +119,30 @@ function SlideRenderer({ slide }: { slide: any }) {
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-col items-center w-full">
               {slide.content.author && (
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#C5A059] to-[#8A6D3B] rounded-full flex items-center justify-center text-black font-serif italic text-xl">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#C5A059] to-[#8A6D3B] rounded-full flex items-center justify-center text-black font-serif italic text-lg md:text-xl">
                     {slide.content.author.charAt(0)}
                   </div>
                   <div className="text-left">
-                    <p className="text-sm font-bold tracking-wider text-[#E0E0E0]">{slide.content.author}</p>
-                    <p className="text-[10px] uppercase opacity-50">{slide.content.role}</p>
+                    <p className="text-xs md:text-sm font-bold tracking-wider text-[#E0E0E0]">{slide.content.author}</p>
+                    <p className="text-[9px] md:text-[10px] uppercase opacity-50">{slide.content.role}</p>
                   </div>
                 </div>
               )}
               {slide.content.actionText && (
                 <div className="flex flex-col items-center gap-6 mt-4 w-full">
-                  <p className="text-[#E0E0E0]/70 text-sm italic font-serif">{slide.content.text}</p>
+                  <p className="text-[#E0E0E0]/70 text-xs md:text-sm italic font-serif">{slide.content.text}</p>
                   {slide.content.link ? (
                     <a href={slide.content.link} target="_blank" rel="noopener noreferrer" className="w-full max-w-md">
-                      <button className="w-full py-3 border border-[#C5A059] text-[#C5A059] text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#C5A059] hover:text-black transition-colors">
+                      <button className="w-full py-3 border border-[#C5A059] text-[#C5A059] text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#C5A059] hover:text-black transition-colors">
                         {slide.content.actionText}
                       </button>
                     </a>
                   ) : (
-                    <button className="w-full max-w-md py-3 border border-[#C5A059] text-[#C5A059] text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#C5A059] hover:text-black transition-colors">
+                    <button className="w-full max-w-md py-3 border border-[#C5A059] text-[#C5A059] text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#C5A059] hover:text-black transition-colors">
                       {slide.content.actionText}
                     </button>
                   )}
-                  <p className="text-[#E0E0E0]/50 font-mono text-[10px] uppercase">{slide.content.contact}</p>
+                  <p className="text-[#E0E0E0]/50 font-mono text-[9px] md:text-[10px] uppercase">{slide.content.contact}</p>
                 </div>
               )}
             </div>
@@ -153,24 +153,24 @@ function SlideRenderer({ slide }: { slide: any }) {
     case 'split':
       return (
         <div className="grid md:grid-cols-2 gap-0 items-stretch bg-[#0F0F0F] border border-white/5">
-          <div className="p-12 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center">
+          <div className="p-6 md:p-12 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center">
             <div className="text-[10px] uppercase tracking-widest text-[#C5A059] mb-4 flex items-center gap-2">
               <Icon className="w-3 h-3" />
               {slide.title}
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif italic font-light mb-6 leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-serif italic font-light mb-6 leading-tight">
               {slide.content.text}
             </h2>
           </div>
-          <div className="p-12 bg-[#161616] flex flex-col justify-center space-y-6">
+          <div className="p-6 md:p-12 bg-[#161616] flex flex-col justify-center space-y-6">
             {slide.content.points.map((point: any, idx: number) => (
               <div key={idx} className="flex gap-4 items-start">
-                <div className="text-[#C5A059] font-serif italic text-lg shrink-0">
+                <div className="text-[#C5A059] font-serif italic text-base md:text-lg shrink-0">
                   {['I.', 'II.', 'III.', 'IV.', 'V.'][idx] || `${idx + 1}.`}
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold uppercase tracking-wider mb-2 text-[#E0E0E0]">{point.title}</h3>
-                  <p className="text-xs text-[#E0E0E0]/60 leading-relaxed">{point.description}</p>
+                  <h3 className="text-xs md:text-sm font-bold uppercase tracking-wider mb-2 text-[#E0E0E0]">{point.title}</h3>
+                  <p className="text-[11px] md:text-xs text-[#E0E0E0]/60 leading-relaxed">{point.description}</p>
                 </div>
               </div>
             ))}
@@ -180,13 +180,13 @@ function SlideRenderer({ slide }: { slide: any }) {
 
     case 'cards':
       return (
-        <div className="bg-[#0F0F0F] border border-white/5 p-12 w-full max-w-6xl">
+        <div className="bg-[#0F0F0F] border border-white/5 p-6 md:p-12 w-full max-w-6xl">
           <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
             <div>
-              <span className="text-[10px] uppercase tracking-widest text-[#C5A059] mb-2 block flex items-center gap-2">
+              <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#C5A059] mb-2 block flex items-center gap-2">
                 <Icon className="w-3 h-3" /> {slide.title}
               </span>
-              {slide.subtitle && <p className="text-sm italic font-serif text-[#E0E0E0]/70">{slide.subtitle}</p>}
+              {slide.subtitle && <p className="text-xs md:text-sm italic font-serif text-[#E0E0E0]/70">{slide.subtitle}</p>}
             </div>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
@@ -197,8 +197,8 @@ function SlideRenderer({ slide }: { slide: any }) {
                   <div className="text-[#C5A059] mb-6 opacity-80">
                     <CardIcon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-[11px] font-bold uppercase tracking-wider mb-3 text-[#E0E0E0]">{card.title}</h3>
-                  <p className="text-xs text-[#E0E0E0]/60 leading-relaxed flex-grow">{card.description}</p>
+                  <h3 className="text-[10px] md:text-[11px] font-bold uppercase tracking-wider mb-3 text-[#E0E0E0]">{card.title}</h3>
+                  <p className="text-[11px] md:text-xs text-[#E0E0E0]/60 leading-relaxed flex-grow">{card.description}</p>
                 </div>
               );
             })}
@@ -208,25 +208,25 @@ function SlideRenderer({ slide }: { slide: any }) {
 
     case 'feature':
       return (
-        <div className="max-w-5xl mx-auto bg-[#0F0F0F] border border-white/5 p-12">
+        <div className="max-w-5xl mx-auto bg-[#0F0F0F] border border-white/5 p-6 md:p-12">
           <div className="mb-12 border-b border-white/10 pb-6">
-            <div className="inline-flex items-center gap-3 text-[10px] uppercase tracking-widest text-[#C5A059] mb-4">
+            <div className="inline-flex items-center gap-3 text-[9px] md:text-[10px] uppercase tracking-widest text-[#C5A059] mb-4">
               <Icon className="w-3 h-3" />
               {slide.title}
             </div>
-            <h2 className="text-3xl md:text-4xl font-serif italic font-light leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif italic font-light leading-tight">
               {slide.subtitle}
             </h2>
           </div>
           <div className="space-y-4">
             {slide.content.features.map((feature: any, idx: number) => (
-              <div key={idx} className="flex items-start gap-6 p-5 bg-[#161616] border border-white/5 hover:border-[#C5A059]/30 transition-colors">
-                <div className="text-[#C5A059] font-serif italic text-xl shrink-0">
+              <div key={idx} className="flex items-start gap-4 md:gap-6 p-4 md:p-5 bg-[#161616] border border-white/5 hover:border-[#C5A059]/30 transition-colors">
+                <div className="text-[#C5A059] font-serif italic text-lg md:text-xl shrink-0">
                   0{idx + 1}
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider mb-2 text-[#E0E0E0]">{feature.title}</h3>
-                  <p className="text-xs text-[#E0E0E0]/60">{feature.description}</p>
+                  <h3 className="text-[11px] md:text-xs font-bold uppercase tracking-wider mb-2 text-[#E0E0E0]">{feature.title}</h3>
+                  <p className="text-[11px] md:text-xs text-[#E0E0E0]/60">{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -236,22 +236,22 @@ function SlideRenderer({ slide }: { slide: any }) {
 
     case 'stats':
       return (
-        <div className="w-full max-w-5xl mx-auto bg-[#0F0F0F] border border-white/5 p-12">
-          <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-[#C5A059] mb-6">
+        <div className="w-full max-w-5xl mx-auto bg-[#0F0F0F] border border-white/5 p-6 md:p-12">
+          <div className="flex items-center gap-3 text-[9px] md:text-[10px] uppercase tracking-widest text-[#C5A059] mb-6">
             <Icon className="w-3 h-3" />
             {slide.title}
           </div>
-          <h2 className="text-3xl md:text-4xl font-serif italic font-light mb-4">{slide.subtitle}</h2>
-          <p className="text-sm text-[#E0E0E0]/60 mb-12 border-l border-[#C5A059] pl-4">{slide.content.text}</p>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif italic font-light mb-4">{slide.subtitle}</h2>
+          <p className="text-[11px] md:text-sm text-[#E0E0E0]/60 mb-12 border-l border-[#C5A059] pl-4">{slide.content.text}</p>
           
           <div className="grid md:grid-cols-3 gap-4">
             {slide.content.stats.map((stat: any, idx: number) => (
-              <div key={idx} className="p-6 bg-[#C5A059] text-black flex flex-col justify-between h-full min-h-[160px]">
+              <div key={idx} className="p-4 md:p-6 bg-[#C5A059] text-black flex flex-col justify-between h-full min-h-[140px] md:min-h-[160px]">
                 <div>
                   <div className="text-[9px] uppercase font-bold tracking-widest opacity-70 mb-2">{stat.label}</div>
-                  <div className="text-4xl font-serif">{stat.value}</div>
+                  <div className="text-3xl md:text-4xl font-serif">{stat.value}</div>
                 </div>
-                <div className="text-[10px] uppercase font-bold opacity-70 mt-4 border-t border-black/10 pt-2">{stat.suffix}</div>
+                <div className="text-[9px] md:text-[10px] uppercase font-bold opacity-70 mt-4 border-t border-black/10 pt-2">{stat.suffix}</div>
               </div>
             ))}
           </div>
@@ -261,28 +261,28 @@ function SlideRenderer({ slide }: { slide: any }) {
     case 'profile':
       return (
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-stretch gap-0 bg-[#0F0F0F] border border-white/5">
-          <div className="w-full md:w-2/5 p-12 border-b md:border-b-0 md:border-r border-white/10 flex flex-col items-center text-center justify-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 text-6xl opacity-5 font-serif">P</div>
-            <div className="w-32 h-32 bg-gradient-to-br from-[#C5A059] to-[#8A6D3B] rounded-full mb-8 flex items-center justify-center font-serif italic text-4xl text-black">
+          <div className="w-full md:w-2/5 p-6 md:p-12 border-b md:border-b-0 md:border-r border-white/10 flex flex-col items-center text-center justify-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 text-4xl md:text-6xl opacity-5 font-serif">P</div>
+            <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-[#C5A059] to-[#8A6D3B] rounded-full mb-8 flex items-center justify-center font-serif italic text-3xl md:text-4xl text-black">
               {slide.content.name.charAt(0)}
             </div>
-            <h2 className="text-2xl font-serif italic mb-2">{slide.content.name}</h2>
-            <p className="text-[#C5A059] text-[10px] uppercase tracking-widest font-bold">{slide.content.role}</p>
+            <h2 className="text-xl md:text-2xl font-serif italic mb-2">{slide.content.name}</h2>
+            <p className="text-[#C5A059] text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{slide.content.role}</p>
           </div>
-          <div className="w-full md:w-3/5 p-12 bg-[#161616]">
+          <div className="w-full md:w-3/5 p-6 md:p-12 bg-[#161616]">
             <div className="mb-8">
-              <p className="text-2xl font-serif italic font-light leading-tight text-[#E0E0E0]">
+              <p className="text-xl md:text-2xl font-serif italic font-light leading-tight text-[#E0E0E0]">
                 "{slide.content.quote.replace(/"/g, '')}"
               </p>
             </div>
-            <p className="text-xs text-[#E0E0E0]/70 mb-8 leading-relaxed">
+            <p className="text-[11px] md:text-xs text-[#E0E0E0]/70 mb-8 leading-relaxed">
               {slide.content.bio}
             </p>
             <div className="space-y-4 border-t border-white/10 pt-6">
               {slide.content.highlights.map((highlight: string, idx: number) => (
                 <div key={idx} className="flex items-center gap-4">
                   <div className="w-1.5 h-1.5 bg-[#C5A059]" />
-                  <span className="text-xs text-[#E0E0E0]/80 tracking-wide">{highlight}</span>
+                  <span className="text-[11px] md:text-xs text-[#E0E0E0]/80 tracking-wide">{highlight}</span>
                 </div>
               ))}
             </div>
@@ -292,22 +292,22 @@ function SlideRenderer({ slide }: { slide: any }) {
 
     case 'timeline':
       return (
-        <div className="max-w-4xl mx-auto w-full bg-[#0F0F0F] border border-white/5 p-12">
-           <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-[#C5A059] mb-10 border-b border-white/10 pb-4">
+        <div className="max-w-4xl mx-auto w-full bg-[#0F0F0F] border border-white/5 p-6 md:p-12">
+           <div className="flex items-center gap-3 text-[9px] md:text-[10px] uppercase tracking-widest text-[#C5A059] mb-10 border-b border-white/10 pb-4">
             <Icon className="w-3 h-3" />
             {slide.title}
           </div>
           
           <div className="space-y-0">
             {slide.content.timeline.map((item: any, idx: number) => (
-              <div key={idx} className="flex gap-6 items-start border-l border-white/20 pl-6 pb-8 relative last:pb-0">
+              <div key={idx} className="flex gap-4 md:gap-6 items-start border-l border-white/20 pl-4 md:pl-6 pb-8 relative last:pb-0">
                 <div className="absolute -left-[5px] top-1 w-2.5 h-2.5 bg-[#C5A059] rotate-45" />
-                <div className="w-32 shrink-0 pt-0.5">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C5A059]">{item.phase}</span>
+                <div className="w-24 md:w-32 shrink-0 pt-0.5">
+                  <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-[#C5A059]">{item.phase}</span>
                 </div>
                 <div>
-                  <h3 className="text-sm font-serif italic mb-2 text-[#E0E0E0]">{item.title}</h3>
-                  <p className="text-xs text-[#E0E0E0]/60 leading-relaxed">{item.description}</p>
+                  <h3 className="text-xs md:text-sm font-serif italic mb-2 text-[#E0E0E0]">{item.title}</h3>
+                  <p className="text-[11px] md:text-xs text-[#E0E0E0]/60 leading-relaxed">{item.description}</p>
                 </div>
               </div>
             ))}
